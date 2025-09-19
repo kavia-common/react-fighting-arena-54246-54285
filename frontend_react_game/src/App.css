@@ -1,104 +1,47 @@
-/* CSS Variables for Theme Management */
-:root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+/* Arena and fighter custom helpers */
+
+.arena-gradient {
+  background-image: radial-gradient(1200px 400px at 50% 120%, rgba(37, 99, 235, 0.12), rgba(255, 255, 255, 0)),
+    linear-gradient(to bottom right, rgba(59,130,246,0.08), rgba(203,213,225,0.18));
 }
 
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
+.floor-stripes {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(37, 99, 235, 0.05) 0px,
+    rgba(37, 99, 235, 0.05) 4px,
+    rgba(59, 130, 246, 0.03) 4px,
+    rgba(59, 130, 246, 0.03) 8px
+  );
 }
 
-.App {
-  text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+.fighter-shadow {
+  filter: drop-shadow(0 12px 18px rgba(0,0,0,0.35));
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.hitflash {
+  animation: hitflash 180ms ease-in-out;
+}
+@keyframes hitflash {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(2) saturate(1.4); }
+  100% { filter: brightness(1); }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.blockflash {
+  animation: blockflash 220ms ease-in-out;
+}
+@keyframes blockflash {
+  0% { filter: contrast(1); }
+  50% { filter: contrast(1.8) hue-rotate(180deg); }
+  100% { filter: contrast(1); }
 }
 
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
+.criticalflash {
+  animation: criticalflash 280ms ease-in-out;
 }
-
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
-}
-
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
-}
-
-.theme-toggle:active {
-  transform: translateY(0);
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
-  }
+@keyframes criticalflash {
+  0% { box-shadow: 0 0 0 rgba(239,68,68,0); }
+  50% { box-shadow: 0 0 0 6px rgba(239,68,68,0.25); }
+  100% { box-shadow: 0 0 0 rgba(239,68,68,0); }
 }

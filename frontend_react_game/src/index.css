@@ -1,13 +1,49 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ocean Professional Theme */
+:root {
+  --ocean-primary: #2563EB; /* blue-600 */
+  --ocean-secondary: #F59E0B; /* amber-500 */
+  --ocean-error: #EF4444; /* red-500 */
+  --ocean-bg: #f9fafb; /* gray-50 */
+  --ocean-surface: #ffffff;
+  --ocean-text: #111827; /* gray-900 */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ocean-bg);
+  color: var(--ocean-text);
+  font-feature-settings: "liga" 1, "calt" 1;
+}
+
+/* Reusable components */
+@layer components {
+  .o-card {
+    @apply bg-white/90 backdrop-blur shadow-lg rounded-xl border border-blue-500/10;
+  }
+  .o-btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-semibold transition-all duration-200;
+  }
+  .o-btn-primary {
+    @apply o-btn bg-blue-600 text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-400/50 focus:outline-none;
+  }
+  .o-btn-ghost {
+    @apply o-btn bg-white/70 hover:bg-white text-blue-700 border border-blue-200;
+  }
+  .o-chip {
+    @apply text-xs font-semibold px-2 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-100;
+  }
+}
+
+/* Simple keyframe helpers */
+@keyframes pulse-soft {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-1px); }
 }
